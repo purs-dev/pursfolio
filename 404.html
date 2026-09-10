@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Jericho Puri</title>
+    <meta name="description" content="404 Error — Page not found.">
+    <meta name="theme-color" content="#020202">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="puri.css">
+
+    <style>
+        .error-viewport {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .error-card {
+            text-align: center;
+            max-width: 520px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 60px 40px;
+        }
+
+        .error-number {
+            font-family: var(--font-heading);
+            font-size: clamp(5rem, 18vw, 10rem);
+            font-weight: 800;
+            line-height: 0.9;
+            color: var(--accent);
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+
+        .error-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .error-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+    <div class="cursor-dot" data-cursor-dot aria-hidden="true"></div>
+    <div class="cursor-outline" data-cursor-outline aria-hidden="true"></div>
+
+    <div class="background-container" aria-hidden="true">
+        <canvas id="bg-canvas"></canvas>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <main class="error-viewport">
+        <div class="error-card">
+            <div class="error-number">404</div>
+            <h2 class="error-title">Page Not Found</h2>
+            <p class="error-desc">The page you're looking for doesn't exist or has been moved.</p>
+            <a href="index.html" class="btn-primary">
+                <span>Go Home</span>
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="puri-3d.js"></script>
+    <script src="puri.js"></script>
+</body>
+</html>

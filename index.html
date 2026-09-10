@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jericho Puri | Developer & Designer</title>
+    <meta name="description" content="Portfolio of Jericho Puri — IT Student, Web Developer, Graphics Artist & Cinematic Video Editor.">
+    <meta name="theme-color" content="#020202">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="puri.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" data-cursor-dot aria-hidden="true"></div>
+    <div class="cursor-outline" data-cursor-outline aria-hidden="true"></div>
+
+    <!-- 3D Background Canvas + Grid -->
+    <div class="background-container" aria-hidden="true">
+        <canvas id="bg-canvas"></canvas>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="site-nav" id="siteNav" aria-label="Main Navigation">
+        <div class="nav-brand-mobile">
+            <span class="accent">JP</span>
+        </div>
+
+        <div class="nav-pill">
+            <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+            <a href="#home" class="nav-link active" data-section="home">
+                <i class="fa-solid fa-house nav-icon"></i>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="#about" class="nav-link" data-section="about">
+                <i class="fa-solid fa-user nav-icon"></i>
+                <span class="nav-label">About</span>
+            </a>
+            <a href="#journey" class="nav-link" data-section="journey">
+                <i class="fa-solid fa-graduation-cap nav-icon"></i>
+                <span class="nav-label">Journey</span>
+            </a>
+            <a href="#projects" class="nav-link" data-section="projects">
+                <i class="fa-solid fa-code nav-icon"></i>
+                <span class="nav-label">Projects</span>
+            </a>
+            <a href="#skills" class="nav-link" data-section="skills">
+                <i class="fa-solid fa-layer-group nav-icon"></i>
+                <span class="nav-label">Skills</span>
+            </a>
+            <a href="#certifications" class="nav-link" data-section="certifications">
+                <i class="fa-solid fa-award nav-icon"></i>
+                <span class="nav-label">Certs</span>
+            </a>
+            <a href="#profiles" class="nav-link" data-section="profiles">
+                <i class="fa-solid fa-globe nav-icon"></i>
+                <span class="nav-label">Profiles</span>
+            </a>
+            <a href="#contact" class="nav-link" data-section="contact">
+                <i class="fa-solid fa-envelope nav-icon"></i>
+                <span class="nav-label">Contact</span>
+            </a>
+        </div>
+
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <main class="hero" id="home">
+        <div class="content-wrapper">
+            <h1 class="hero-heading">JERICHO DAVID PURI</h1>
+
+            <p class="hero-role">Developer &mdash; Designer &mdash; Editor</p>
+
+            <p class="hero-desc">
+                IT student building web apps, crafting interfaces, and producing cinematic media.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">
+                    <span>Let's Connect</span>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+                <a href="#projects" class="btn-secondary">
+                    <span>See My Work</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-cue">
+            <div class="cue-line"></div>
+        </div>
+    </main>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-photo-col">
+                    <img src="images/jdp.jfif" alt="Jericho Puri" class="about-photo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+                </div>
+                <div class="about-text-col">
+                    <span class="section-label">01 &mdash; About</span>
+                    <h2 class="section-title">About Me</h2>
+                    <p>
+                        I am an Information Technology student passionate about learning and improving my skills in technology. I always seek different approaches when facing a challenge, because I believe there is always more than one way to solve a problem.
+                    </p>
+                    <p>
+                        With dedication and curiosity, I aim to become a skilled IT professional crafting digital experiences through modern code, robust architectures, and interactive graphics.
+                    </p>
+                    <div class="metrics">
+                        <div class="metric">
+                            <span class="metric-num">3+</span>
+                            <span class="metric-label">Years in Code</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-num">15+</span>
+                            <span class="metric-label">Projects</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-num">100%</span>
+                            <span class="metric-label">Commitment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="journey-section" id="journey">
+        <div class="container">
+            <span class="section-label">02 &mdash; Journey</span>
+            <h2 class="section-title">My Roadmap</h2>
+
+            <div class="timeline">
+                <div class="timeline-track">
+                    <div class="timeline-progress" id="timelineProgress"></div>
+                </div>
+
+                <div class="timeline-item" data-side="left">
+                    <div class="timeline-content">
+                        <span class="tag">SPCF &bull; CCIS</span>
+                        <h3>BS Information Technology</h3>
+                        <p>Building a strong foundation in programming, systems, databases, and modern tech stacks.</p>
+                    </div>
+                    <div class="timeline-date">2023 &mdash; Present</div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item" data-side="right">
+                    <div class="timeline-content">
+                        <span class="tag">Web &amp; App</span>
+                        <h3>Web &amp; App Developer</h3>
+                        <p>Engineering responsive portfolios, Flutter apps, and interactive web systems.</p>
+                    </div>
+                    <div class="timeline-date">Present</div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item" data-side="left">
+                    <div class="timeline-content">
+                        <span class="tag">Creative</span>
+                        <h3>Graphics &amp; Cinematic Media</h3>
+                        <p>Blending code with artistry through graphic design, UI/UX, and video production.</p>
+                    </div>
+                    <div class="timeline-date">Always</div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <span class="section-label">03 &mdash; Projects</span>
+            <h2 class="section-title">What I've Built</h2>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-date">Aug 2026</div>
+                    <span class="tag">Full-Stack + Flutter</span>
+                    <h3>Restaurant Ordering System</h3>
+                    <p>Full-stack website and Flutter mobile app for restaurant ordering — a complete end-to-end build integrating web and mobile.</p>
+                    <a href="https://preview.flutlab.io/user_jnpt/sison-puri-mopl-restaurant/" target="_blank" rel="noopener noreferrer" class="card-link">
+                        View Live <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-date">Archive</div>
+                    <span class="tag">Graphics / UI-UX</span>
+                    <h3>Visual Identity Drive</h3>
+                    <p>UI/UX design exploration and brand layouts — curated assets in my graphics archive.</p>
+                    <a href="https://drive.google.com/drive/folders/1SbxO9g4AKxJyyEa8N4CTd4JtxlG7L-b-" target="_blank" rel="noopener noreferrer" class="card-link">
+                        Open Drive <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-date">Film Vault</div>
+                    <span class="tag">Cinematics</span>
+                    <h3>Cinematic Film Vault</h3>
+                    <p>Docu-film production and video post-processing — cinematic storytelling from concept to final cut.</p>
+                    <a href="https://drive.google.com/drive/folders/1yxpSOjNNpaVZ4F6Y1WLEx5D7ckdQ8K3C" target="_blank" rel="noopener noreferrer" class="card-link">
+                        Watch Film <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <span class="section-label">04 &mdash; Skills</span>
+            <h2 class="section-title">Technical Skills</h2>
+
+            <div class="skill-filters" id="skillFilters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="languages">Languages</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="databases">Databases</button>
+                <button class="filter-btn" data-filter="creative">Creative</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+            </div>
+
+            <div class="skill-grid" id="skillGrid">
+                <div class="skill-card" data-category="languages"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                <div class="skill-card" data-category="languages"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                <div class="skill-card" data-category="languages"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                <div class="skill-card" data-category="languages"><i class="devicon-dart-plain colored"></i><span>Dart</span></div>
+                <div class="skill-card" data-category="frontend"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                <div class="skill-card" data-category="frontend"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                <div class="skill-card" data-category="frontend"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+                <div class="skill-card" data-category="databases"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                <div class="skill-card" data-category="databases"><i class="fa-solid fa-database icon-accent"></i><span>RDBMS / SQL</span></div>
+                <div class="skill-card" data-category="creative"><i class="fa-solid fa-film icon-accent"></i><span>Video Editing</span></div>
+                <div class="skill-card" data-category="creative"><i class="fa-solid fa-palette icon-accent"></i><span>Graphic Design</span></div>
+                <div class="skill-card" data-category="tools"><i class="devicon-figma-plain colored"></i><span>Figma</span></div>
+                <div class="skill-card" data-category="tools"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+                <div class="skill-card" data-category="tools"><i class="devicon-git-plain colored"></i><span>Git &bull; GitHub</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="certs-section" id="certifications">
+        <div class="container">
+            <span class="section-label">05 &mdash; Certifications</span>
+            <h2 class="section-title">Milestones</h2>
+
+            <div class="grid-3">
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <img src="images/database.png" alt="Database Badge" onerror="this.src='https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Certified Database Badge</h3>
+                        <p>Relational systems, SQL, and data management proficiency.</p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <img src="images/java.png" alt="Java Badge" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Certified Java Badge</h3>
+                        <p>OOP foundations, logic building, and application development.</p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <img src="images/web-pic.png" alt="Frontend Developer" onerror="this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Frontend Developer</h3>
+                        <p>The responsive web portfolio you're viewing right now.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFILES -->
+    <section class="profiles-section" id="profiles">
+        <div class="container">
+            <span class="section-label">06 &mdash; Profiles</span>
+            <h2 class="section-title">Web Presence</h2>
+
+            <div class="profiles-header">
+                <img src="images/jdp.jfif" alt="Jericho Puri" class="profiles-avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+                <span class="accent font-mono">@jdpursss</span>
+            </div>
+
+            <div class="grid-4">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="profile-card">
+                    <div class="profile-icon"><i class="fa-brands fa-facebook"></i></div>
+                    <h3>Facebook</h3>
+                    <p>Connect</p>
+                </a>
+                <a href="https://www.instagram.com/jdpursss/" target="_blank" rel="noopener noreferrer" class="profile-card">
+                    <div class="profile-icon"><i class="fa-brands fa-instagram"></i></div>
+                    <h3>Instagram</h3>
+                    <p>Follow</p>
+                </a>
+                <a href="mailto:purijericho1020@gmail.com" class="profile-card">
+                    <div class="profile-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <p>Reach out</p>
+                </a>
+                <a href="tel:09169335903" class="profile-card">
+                    <div class="profile-icon"><i class="fa-solid fa-phone"></i></div>
+                    <h3>Phone</h3>
+                    <p>Call</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="container contact-container">
+            <span class="section-label">07 &mdash; Contact</span>
+            <h2 class="section-title">Get In Touch</h2>
+
+            <p class="contact-desc">
+                Have a project in mind? I'm open to new opportunities and conversations.
+            </p>
+
+            <div class="contact-card">
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required placeholder=" " autocomplete="off">
+                        <label for="name">Your Name</label>
+                        <i class="fa-solid fa-user input-icon"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder=" " autocomplete="off">
+                        <label for="email">Your Email</label>
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+                        <label for="message">Message</label>
+                        <i class="fa-solid fa-comment input-icon"></i>
+                    </div>
+                    <button type="submit" class="btn-primary btn-submit" id="sendBtn">
+                        <span>Send Message</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h2 class="footer-logo">Jericho<span class="accent">Puri</span></h2>
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certs</a></li>
+                <li><a href="#profiles">Profiles</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="footer-socials">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/jdpursss/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:purijericho1020@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Jericho David Puri.</p>
+            <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="puri-3d.js"></script>
+    <script src="puri.js"></script>
+</body>
+</html>
