@@ -1,13 +1,15 @@
-// JERICHO PURI — PORTFOLIO JS
+// JERICHO PURI — DEV HUB CORE GSAP & INTERACTION ENGINE
+// Theme: Onyx (#020202) & Candy Blue (#B2D5E5)
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Register GSAP plugins if available
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
     }
 
     // =========================================================
-    // 1. SPLITTEXT ENGINE
+    // 1. IN-HOUSE SPLITTEXT ENGINE
     // =========================================================
     function splitTextToChars(element) {
         if (!element) return [];
@@ -15,22 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
         element.innerHTML = '';
         element.setAttribute('aria-label', text);
         const chars = [];
+
         const words = text.split(/\s+/);
         words.forEach((word, wIdx) => {
             const wordWrap = document.createElement('span');
             wordWrap.className = 'word-wrap';
+
             for (let i = 0; i < word.length; i++) {
                 const charWrap = document.createElement('span');
                 charWrap.className = 'char-wrap';
+
                 const charSpan = document.createElement('span');
                 charSpan.className = 'char';
                 charSpan.textContent = word[i];
+
                 charWrap.appendChild(charSpan);
                 wordWrap.appendChild(charWrap);
                 chars.push(charSpan);
             }
+
             element.appendChild(wordWrap);
-            if (wIdx < words.length - 1) element.appendChild(document.createTextNode(' '));
+            if (wIdx < words.length - 1) {
+                element.appendChild(document.createTextNode(' '));
+            }
         });
         return chars;
     }
@@ -41,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         element.innerHTML = '';
         element.setAttribute('aria-label', text);
         const wordSpans = [];
+
         const words = text.split(/\s+/);
         words.forEach((w, idx) => {
             const wrap = document.createElement('span');
@@ -51,19 +61,38 @@ document.addEventListener('DOMContentLoaded', () => {
             wrap.appendChild(wordInner);
             element.appendChild(wrap);
             wordSpans.push(wordInner);
-            if (idx < words.length - 1) element.appendChild(document.createTextNode(' '));
+
+            if (idx < words.length - 1) {
+                element.appendChild(document.createTextNode(' '));
+            }
         });
         return wordSpans;
     }
 
     // =========================================================
-    // 2. PRELOADER
+    // 2. PRELOADER SEQUENCE
     // =========================================================
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        const fill = document.getElementById('preloaderFill');
+        const fill = document.getElementById('preloaderSleekFill');
         const counter = document.getElementById('preloaderCounter');
-        const DURATION = 2200;
+        const particles = document.getElementById('preloaderParticles');
+
+        if (particles) {
+            for (let i = 0; i < 50; i++) {
+                const p = document.createElement('div');
+                p.className = 'preloader-particle';
+                p.style.left = `${Math.random() * 100}%`;
+                const size = 2 + Math.random() * 3.5;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.animationDuration = `${2 + Math.random() * 2}s`;
+                p.style.animationDelay = `${Math.random() * 1.5}s`;
+                particles.appendChild(p);
+            }
+        }
+
+        const DURATION = 2400;
         const startTime = performance.now();
         let pageLoaded = false;
         let animationDone = false;
@@ -72,10 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const elapsed = now - startTime;
             let t = Math.min(elapsed / DURATION, 1);
             let easedT = 1 - Math.pow(1 - t, 3);
-            if (pageLoaded && easedT >= 0.8) easedT = Math.min(easedT + (1 - easedT) * 0.1, 1);
+
+            if (pageLoaded && easedT >= 0.8) {
+                easedT = Math.min(easedT + (1 - easedT) * 0.1, 1);
+            }
+
             const pct = Math.round(easedT * 100);
             if (fill) fill.style.width = `${pct}%`;
             if (counter) counter.textContent = `${pct}%`;
+
             if (easedT < 1) {
                 requestAnimationFrame(animatePreloader);
             } else {
@@ -91,19 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.add('page-loaded');
                 window.dispatchEvent(new Event('preloaderComplete'));
                 initHeroAnimations();
-            }, 250);
+            }, 300);
         }
 
         requestAnimationFrame(animatePreloader);
         window.addEventListener('load', () => { pageLoaded = true; tryDismiss(); });
-        setTimeout(() => { pageLoaded = true; tryDismiss(); }, 4500);
+        setTimeout(() => { pageLoaded = true; tryDismiss(); }, 5000);
     } else {
         document.body.classList.add('page-loaded');
         initHeroAnimations();
     }
 
     // =========================================================
-    // 3. CUSTOM CURSOR
+    // 3. CUSTOM MAGNETIC CURSOR
     // =========================================================
     const dot = document.querySelector('[data-cursor-dot]');
     const outline = document.querySelector('[data-cursor-outline]');
@@ -113,19 +147,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const { clientX: x, clientY: y } = e;
             dot.style.left = `${x}px`;
             dot.style.top = `${y}px`;
+
             if (typeof gsap !== 'undefined') {
-                gsap.to(outline, { left: x, top: y, duration: 0.3, ease: "power2.out" });
+                gsap.to(outline, { left: x, top: y, duration: 0.32, ease: "power2.out" });
             } else {
                 outline.style.left = `${x}px`;
                 outline.style.top = `${y}px`;
             }
         });
 
+        // Hover expansions
         document.querySelectorAll('a, button, .filter-btn, .skill-card').forEach(el => {
             el.addEventListener('mouseenter', () => outline.classList.add('hovered'));
             el.addEventListener('mouseleave', () => outline.classList.remove('hovered'));
         });
 
+        // View mode over experience cards
         document.querySelectorAll('.experience-card').forEach(card => {
             card.addEventListener('mouseenter', () => outline.classList.add('view-mode'));
             card.addEventListener('mouseleave', () => outline.classList.remove('view-mode'));
@@ -133,44 +170,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================
-    // 4. MAGNETIC BUTTONS
+    // 4. MAGNETIC BUTTON PHYSICS
     // =========================================================
-    document.querySelectorAll('[data-magnetic]').forEach((el) => {
+    const magneticElements = document.querySelectorAll('[data-magnetic]');
+    magneticElements.forEach((el) => {
         el.addEventListener('mousemove', (e) => {
             const rect = el.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
+
             if (typeof gsap !== 'undefined') {
-                gsap.to(el, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+                gsap.to(el, {
+                    x: x * 0.35,
+                    y: y * 0.35,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
             }
         });
+
         el.addEventListener('mouseleave', () => {
             if (typeof gsap !== 'undefined') {
-                gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.4)" });
+                gsap.to(el, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.55,
+                    ease: "elastic.out(1, 0.4)"
+                });
+            } else {
+                el.style.transform = 'none';
             }
         });
     });
 
     // =========================================================
-    // 5. HERO ANIMATIONS
+    // 5. HERO GSAP SPLITTEXT CHARACTER KINETIC REVEALS
     // =========================================================
     function initHeroAnimations() {
         const titleEl = document.querySelector('[data-split-chars]');
-        const subtitleEl = document.querySelector('[data-split-words]');
+        const manifestoEl = document.querySelector('[data-split-words]');
 
         if (titleEl && typeof gsap !== 'undefined') {
             const chars = splitTextToChars(titleEl);
             gsap.fromTo(chars,
-                { y: 80, rotateX: -70, opacity: 0 },
-                { y: 0, rotateX: 0, opacity: 1, duration: 1, stagger: 0.03, ease: "power4.out", delay: 0.1 }
+                { y: 100, rotateX: -80, opacity: 0 },
+                {
+                    y: 0,
+                    rotateX: 0,
+                    opacity: 1,
+                    duration: 1.1,
+                    stagger: 0.035,
+                    ease: "power4.out",
+                    delay: 0.15
+                }
             );
         }
 
-        if (subtitleEl && typeof gsap !== 'undefined') {
-            const words = splitTextToWords(subtitleEl);
+        if (manifestoEl && typeof gsap !== 'undefined') {
+            const words = splitTextToWords(manifestoEl);
             gsap.fromTo(words,
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.7, stagger: 0.015, ease: "power3.out", delay: 0.4 }
+                { y: 25, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.018,
+                    ease: "power3.out",
+                    delay: 0.5
+                }
             );
         }
 
@@ -178,64 +245,91 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================
-    // 6. TYPEWRITER
+    // 6. DYNAMIC TYPEWRITER
     // =========================================================
     function initTypewriter() {
         const typeEl = document.getElementById('typing-text');
         if (!typeEl) return;
-        const words = ['A CREATIVE DEVELOPER', 'A GRAPHICS ARTIST', 'A VIDEO EDITOR', 'A UI/UX DESIGNER', 'A SYSTEMS ARCHITECT'];
+
+        const words = [
+            'A CREATIVE DEVELOPER',
+            'A GRAPHICS ARTIST',
+            'A VIDEO EDITOR',
+            'A UI/UX DESIGNER',
+            'A SYSTEMS ARCHITECT'
+        ];
+
         let wi = 0, ci = 0, del = false;
 
         function type() {
             const word = words[wi];
             typeEl.textContent = del ? word.substring(0, ci - 1) : word.substring(0, ci + 1);
             if (del) ci--; else ci++;
-            let speed = del ? 50 : 90;
-            if (!del && ci === word.length) { speed = 1600; del = true; }
-            else if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; speed = 400; }
+
+            let speed = del ? 55 : 95;
+
+            if (!del && ci === word.length) {
+                speed = 1700;
+                del = true;
+            } else if (del && ci === 0) {
+                del = false;
+                wi = (wi + 1) % words.length;
+                speed = 450;
+            }
+
             setTimeout(type, speed);
         }
-        setTimeout(type, 250);
+
+        setTimeout(type, 300);
     }
 
     // =========================================================
-    // 7. SCROLL REVEAL
+    // 7. 3D PERSPECTIVE SCROLL REVEAL
     // =========================================================
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(en => {
-            if (en.isIntersecting) en.target.classList.add('expanded');
-            else en.target.classList.remove('expanded');
+            if (en.isIntersecting) {
+                en.target.classList.add('expanded');
+            } else {
+                en.target.classList.remove('expanded');
+            }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.22 });
 
     document.querySelectorAll('.scroll-reveal, .timeline-item').forEach(el => {
         revealObserver.observe(el);
     });
 
     // =========================================================
-    // 8. SECTION HEADING SPLITTEXT
+    // 8. SECTION HEADINGS KINETIC SPLITTEXT
     // =========================================================
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         document.querySelectorAll('.split-heading').forEach((heading) => {
             const chars = splitTextToChars(heading);
             gsap.fromTo(chars,
-                { y: 40, opacity: 0 },
+                { y: 55, opacity: 0 },
                 {
-                    y: 0, opacity: 1,
-                    duration: 0.75, stagger: 0.018,
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.85,
+                    stagger: 0.02,
                     ease: "power3.out",
-                    scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" }
+                    scrollTrigger: {
+                        trigger: heading,
+                        start: "top 88%",
+                        toggleActions: "play none none none"
+                    }
                 }
             );
         });
     }
 
     // =========================================================
-    // 9. TIMELINE PROGRESS
+    // 9. TIMELINE PROGRESS TRACKING
     // =========================================================
     const timeline = document.querySelector('.timeline');
     if (timeline) {
-        const prog = document.getElementById('timelineProgress');
+        const prog = document.getElementById('timelineProgress') || timeline.querySelector('.timeline-progress');
         const dots = timeline.querySelectorAll('.timeline-dot');
 
         function updateTimeline() {
@@ -244,7 +338,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const dist = start - rect.top;
             let pct = (dist / rect.height) * 100;
             pct = Math.max(0, Math.min(100, pct));
+
             if (prog) prog.style.height = `${pct}%`;
+
             dots.forEach(d => {
                 const dotTop = d.getBoundingClientRect().top;
                 const bottom = prog.getBoundingClientRect().bottom;
@@ -258,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================
-    // 10. EXPERIENCE CARD MOUSE SPOTLIGHT
+    // 10. EXPERIENCE CARD MOUSE SPOTLIGHT HALO TRACKING
     // =========================================================
     document.querySelectorAll('.experience-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -269,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================================
-    // 11. 3D CARD TILT
+    // 11. 3D CARD TILT ON MOUSEMOVE
     // =========================================================
     document.querySelectorAll('[data-tilt]').forEach((card) => {
         card.addEventListener('mousemove', (e) => {
@@ -278,15 +374,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = e.clientY - rect.top;
             const cx = rect.width / 2;
             const cy = rect.height / 2;
-            const rx = ((y - cy) / cy) * -5;
-            const ry = ((x - cx) / cx) * 5;
+            const rx = ((y - cy) / cy) * -6;
+            const ry = ((x - cx) / cx) * 6;
+
             if (typeof gsap !== 'undefined') {
-                gsap.to(card, { rotationX: rx, rotationY: ry, transformPerspective: 1000, duration: 0.3, ease: "power1.out" });
+                gsap.to(card, {
+                    rotationX: rx,
+                    rotationY: ry,
+                    transformPerspective: 1000,
+                    duration: 0.3,
+                    ease: "power1.out"
+                });
             }
         });
+
         card.addEventListener('mouseleave', () => {
             if (typeof gsap !== 'undefined') {
-                gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.5, ease: "power2.out" });
+                gsap.to(card, {
+                    rotationX: 0,
+                    rotationY: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
             }
         });
     });
@@ -302,12 +411,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const f = btn.dataset.filter;
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+
             skillCards.forEach(c => {
                 const match = f === 'all' || c.dataset.category === f;
                 if (match) {
                     c.style.display = '';
                     if (typeof gsap !== 'undefined') {
-                        gsap.fromTo(c, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" });
+                        gsap.fromTo(c, { scale: 0.88, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power2.out" });
                     }
                 } else {
                     c.style.display = 'none';
@@ -327,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // =========================================================
-    // 14. NAVIGATION (SCROLLSPY + INDICATOR + HAMBURGER)
+    // 14. FLOATING NAV (SCROLLSPY + SLIDING PILL + MOBILE HAMBURGER)
     // =========================================================
     const nav = document.getElementById('siteNav');
     const indicator = document.getElementById('navIndicator');
@@ -352,13 +462,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (id === current) return;
             current = id;
             navLinks.forEach(l => {
-                if (l.dataset.section === id) { l.classList.add('active'); moveIndicator(l); }
-                else l.classList.remove('active');
+                if (l.dataset.section === id) {
+                    l.classList.add('active');
+                    moveIndicator(l);
+                } else {
+                    l.classList.remove('active');
+                }
             });
         }
 
         const spy = new IntersectionObserver((entries) => {
-            entries.forEach(en => { if (en.isIntersecting) setActive(en.target.id); });
+            entries.forEach(en => {
+                if (en.isIntersecting) setActive(en.target.id);
+            });
         }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
         sections.forEach(s => spy.observe(s));
@@ -385,15 +501,22 @@ document.addEventListener('DOMContentLoaded', () => {
             l.addEventListener('click', (e) => {
                 e.preventDefault();
                 const t = document.getElementById(l.dataset.section);
-                if (t) { t.scrollIntoView({ behavior: 'smooth' }); if (navPill) navPill.classList.remove('mobile-open'); }
+                if (t) {
+                    t.scrollIntoView({ behavior: 'smooth' });
+                    if (navPill) navPill.classList.remove('mobile-open');
+                }
             });
         });
 
+        // Initialize indicator position
         window.addEventListener('load', () => moveIndicator(navLinks[0]));
     }
 
+    // Mobile Hamburger Toggle
     if (navHamburger && navPill) {
-        navHamburger.addEventListener('click', () => navPill.classList.toggle('mobile-open'));
+        navHamburger.addEventListener('click', () => {
+            navPill.classList.toggle('mobile-open');
+        });
     }
 
     // =========================================================
@@ -414,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = document.getElementById('sendBtn');
             if (btn) {
-                btn.innerHTML = '<span>Sent!</span><i class="fa-solid fa-circle-check"></i>';
+                btn.innerHTML = '<span>Message Sent!</span><i class="fa-solid fa-circle-check"></i>';
                 btn.classList.add('sent');
                 setTimeout(() => {
                     btn.innerHTML = '<span>Send Message</span><i class="fa-solid fa-paper-plane"></i>';

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 // VOID — Jericho Puri</title>
-    <meta name="description" content="404 Error — Page not found.">
+    <meta name="description" content="404 Error — Requested coordinates do not exist within this archive.">
     <meta name="theme-color" content="#020202">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Syne:wght@700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -30,50 +30,54 @@
         }
 
         .error-card {
-            max-width: 700px;
+            max-width: 780px;
             width: 100%;
             text-align: center;
-            padding: 60px 36px;
+            padding: 70px 40px;
         }
 
         .error-huge-number {
             font-family: var(--font-heading);
-            font-size: clamp(6rem, 18vw, 12rem);
+            font-size: clamp(6.5rem, 20vw, 13rem);
             font-weight: 800;
             line-height: 0.9;
             color: transparent;
-            -webkit-text-stroke: 2px var(--accent);
-            margin-bottom: 20px;
+            -webkit-text-stroke: 2px var(--accent-candy);
+            text-shadow: 0 0 50px var(--accent-glow);
+            margin-bottom: 24px;
             user-select: none;
             letter-spacing: 4px;
         }
 
         .error-title {
             font-family: var(--font-heading);
-            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
             font-weight: 800;
             color: #fff;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .error-description {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            max-width: 48ch;
-            margin: 0 auto 32px;
+            max-width: 52ch;
+            margin: 0 auto 36px;
         }
     </style>
 </head>
 <body class="page-loaded">
 
+    <!-- Scroll Progress Bar -->
     <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
 
+    <!-- Custom Cursor -->
     <div class="cursor-dot" data-cursor-dot aria-hidden="true"></div>
     <div class="cursor-outline" data-cursor-outline aria-hidden="true">
         <span class="cursor-view-text">RETURN</span>
     </div>
 
+    <!-- 3D Canvas Background + Grid + Atmospheric Mist -->
     <div class="background-container" aria-hidden="true">
         <canvas id="bg-canvas"></canvas>
         <div class="grid-overlay"></div>
@@ -81,6 +85,7 @@
         <div class="noise-overlay"></div>
     </div>
 
+    <!-- MAIN 404 STAGE -->
     <main class="error-viewport">
         <div class="glass-card error-card expanded" data-tilt>
             <div class="crosshair cross-tl">+</div>
@@ -89,13 +94,14 @@
             <div class="crosshair cross-br">+</div>
 
             <h1 class="error-huge-number">404</h1>
+
             <h2 class="error-title">PAGE NOT FOUND</h2>
             <p class="error-description">
                 The page you're looking for doesn't exist or has been moved.
             </p>
 
             <div class="hero-buttons">
-                <a href="index.html" class="btn-primary btn-magnetic" data-magnetic>
+                <a href="index.html" class="btn-resume btn-magnetic" data-magnetic>
                     <span>Go Home</span>
                     <i class="fa-solid fa-house"></i>
                 </a>

@@ -24,13 +24,13 @@
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
 
-    <!-- Custom Cursor -->
+    <!-- Custom Musée Magnetic Cursor -->
     <div class="cursor-dot" data-cursor-dot aria-hidden="true"></div>
     <div class="cursor-outline" data-cursor-outline aria-hidden="true">
         <span class="cursor-view-text">EXPLORE</span>
     </div>
 
-    <!-- 3D Background Canvas + Grid -->
+    <!-- 3D Background Canvas + Grid + Ambient Mist -->
     <div class="background-container" aria-hidden="true">
         <canvas id="bg-canvas"></canvas>
         <div class="grid-overlay"></div>
@@ -39,28 +39,39 @@
     </div>
 
     <!-- PRELOADER -->
-    <div class="preloader" id="preloader" role="dialog" aria-modal="true" aria-label="Loading">
+    <div class="preloader" id="preloader" role="dialog" aria-modal="true" aria-label="Loading Dev Hub">
+        <div class="preloader-particles" id="preloaderParticles"></div>
+        
         <div class="preloader-brand">
             <div class="preloader-brand-main">
-                <span class="preloader-brand-name">Jericho</span><span class="accent">Puri</span>
+                <span class="preloader-brand-name">Jericho</span><span class="candy-accent">Puri</span>
             </div>
-            <div class="preloader-brand-sub">
-                <span class="sub-line"></span>
+            <div class="preloader-brand-subtitle">
+                <span class="subtitle-line"></span>
                 <span>PERSONAL DEV HUB</span>
-                <span class="sub-line"></span>
+                <span class="subtitle-line"></span>
             </div>
         </div>
-        <div class="preloader-track">
-            <div class="preloader-fill" id="preloaderFill"></div>
+
+        <div class="preloader-sleek-track">
+            <div class="preloader-sleek-fill" id="preloaderSleekFill"></div>
         </div>
         <div class="preloader-counter" id="preloaderCounter">0%</div>
+
+        <div class="preloader-tagline">
+            <span class="tagline-word" style="--w:0">Build.</span>
+            <span class="tagline-word" style="--w:1">Design.</span>
+            <span class="tagline-word" style="--w:2">Edit.</span>
+            <span class="tagline-word" style="--w:3">Create.</span>
+        </div>
     </div>
 
-    <!-- NAVIGATION -->
+    <!-- FLOATING MUSEE GLASS NAVIGATION -->
     <nav class="site-nav" id="siteNav" aria-label="Main Navigation">
         <div class="nav-brand-mobile">
-            <span class="accent font-syne">JP</span>
+            <span class="candy-accent font-val">JP</span>
         </div>
+
         <div class="nav-pill">
             <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
             <a href="#home" class="nav-link active" data-section="home">
@@ -96,15 +107,16 @@
                 <span class="nav-label">Contact</span>
             </a>
         </div>
+
         <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
             <span class="ham-line"></span>
             <span class="ham-line"></span>
         </button>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <main class="hero" id="home">
-        <!-- Floating Corner Icons -->
+        <!-- Floating Interactive Corner Badges -->
         <div class="floating-icon icon-top-left" data-speed="0.2">
             <i class="fa-solid fa-code"></i>
         </div>
@@ -118,62 +130,59 @@
             <i class="fa-solid fa-database"></i>
         </div>
 
-        <!-- HUD Corners -->
+        <!-- Technical Corner HUD Marks -->
         <div class="hud-corner hud-top-left">
             <span class="hud-mono">[SYS.INIT // 2026]</span>
             <span class="hud-mono dim">BS INFORMATION TECHNOLOGY</span>
         </div>
         <div class="hud-corner hud-top-right">
-            <span class="hud-mono"><span class="beacon"></span> OPEN TO WORK</span>
+            <span class="hud-mono"><span class="pulse-beacon"></span> OPEN TO WORK</span>
             <span class="hud-mono dim">LOC: SPCF &bull; CCIS</span>
         </div>
 
         <div class="content-wrapper">
-            <!-- Kicker -->
             <div class="kicker-pill">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B2D5E5" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                <span>WELCOME TO THE ARCHIVE OF</span>
+                <span>WELCOME TO THE ARCHIVE</span>
             </div>
 
-            <!-- GSAP Animated Title -->
+            <!-- GSAP SplitText Characters Animated Title -->
             <h1 class="hero-split-heading" data-split-chars>
                 JERICHO DAVID PURI
             </h1>
 
-            <!-- Typewriter -->
             <div class="typewriter-box">
                 <span class="code-bracket">&lt;</span>
-                <span class="accent font-syne" id="typing-text">A CREATIVE DEVELOPER</span>
+                <span class="candy-accent font-val" id="typing-text">A CREATIVE DEVELOPER</span>
                 <span class="code-bracket">/&gt;</span>
             </div>
 
-            <!-- Subtitle -->
-            <h2 class="hero-subtitle" data-split-words>
+            <h2 class="sub-title hero-manifesto" data-split-words>
                 Blending full-stack systems, dynamic 3D web visuals, and cinematic production.
             </h2>
 
             <div class="hero-buttons">
-                <a href="#contact" class="btn-primary btn-magnetic" data-magnetic>
-                    <span>Let's Connect</span>
+                <a href="#contact" class="btn-resume btn-magnetic" data-magnetic>
+                    <span>Let&#8217;s Connect</span>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="#projects" class="btn-secondary btn-magnetic" data-magnetic>
+                <a href="#projects" class="btn-resume btn-magnetic" data-magnetic>
                     <span>See My Work</span>
                     <i class="fa-solid fa-arrow-down"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Scroll Cue -->
+        <!-- Scroll Cue Indicator -->
         <div class="hero-scroll-cue">
-            <span class="cue-label">SCROLL</span>
+            <span class="cue-label">SCROLL TO EXPLORE</span>
             <div class="cue-wheel">
                 <div class="cue-dot"></div>
             </div>
         </div>
     </main>
 
-    <!-- MARQUEE -->
+    <!-- BIG-TYPE EDITORIAL MARQUEE -->
     <div class="art-marquee" aria-hidden="true">
         <div class="marquee-track">
             <span>MIST &#10022; PURI &#10022; DEVELOPER &#10022; CANDY BLUE &#10022; CINEMATIC &#10022;</span>
@@ -183,7 +192,7 @@
         </div>
     </div>
 
-    <!-- ABOUT -->
+    <!-- ABOUT SECTION: 3D PERSPECTIVE GLASS CARD WITH ROTATING CONIC BORDER -->
     <section class="about-section" id="about">
         <div class="glass-card scroll-reveal" data-tilt>
             <div class="crosshair cross-tl">+</div>
@@ -195,36 +204,36 @@
                 <div class="about-avatar-col">
                     <div class="avatar-ring-box">
                         <img src="images/jdp.jfif" alt="Jericho Puri" class="about-avatar-photo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
-                        <div class="avatar-ring"></div>
+                        <div class="avatar-radar-ring"></div>
                     </div>
                     <div class="badge-status">
-                        <span class="status-dot"></span>
+                        <span class="status-indicator"></span>
                         <span>ACTIVE // READY TO CODE</span>
                     </div>
                 </div>
 
                 <div class="about-content-col">
-                    <span class="section-label">01 // EXHIBIT</span>
-                    <h2 class="section-title-left split-heading">About Me &mdash; <span class="accent font-syne">Behind The Code</span></h2>
-                    <p class="about-body">
-                        I am an Information Technology student passionate about learning and improving my skills in technology. I always seek different approaches when facing a challenge, because I believe there is always more than one way to solve a problem.
+                    <div class="section-tag-inline">01 // EXHIBIT</div>
+                    <h2 class="section-title-left split-heading">About Me &#8212; <span class="candy-accent font-val">Behind The Code!</span></h2>
+                    <p class="about-body-text">
+                        I am an Information Technology student who is passionate about learning and improving my skills in the field of technology. I always seek different approaches when facing a challenge, because I believe there is always more than one way to solve a problem.
                     </p>
-                    <p class="about-body">
-                        With dedication, curiosity, and a strong willingness to grow, I aim to become a skilled IT professional crafting digital experiences through modern code, robust architectures, and interactive graphics.
+                    <p class="about-body-text">
+                        With dedication, curiosity, and a strong willingness to grow, I aim to become a skilled IT professional crafting digital experiences through modern code, robust architectures, and immersive interactive graphics.
                     </p>
-
+                    
                     <div class="about-metric-row">
                         <div class="metric-item">
                             <span class="metric-num">3+</span>
-                            <span class="metric-desc">Years in Code</span>
+                            <span class="metric-desc">Years in Code &amp; Systems</span>
                         </div>
                         <div class="metric-item">
                             <span class="metric-num">15+</span>
-                            <span class="metric-desc">Projects</span>
+                            <span class="metric-desc">Projects &amp; Designs</span>
                         </div>
                         <div class="metric-item">
                             <span class="metric-num">100%</span>
-                            <span class="metric-desc">Commitment</span>
+                            <span class="metric-desc">Commitment to Quality</span>
                         </div>
                     </div>
                 </div>
@@ -232,11 +241,11 @@
         </div>
     </section>
 
-    <!-- JOURNEY -->
+    <!-- JOURNEY / ROADMAP SECTION -->
     <section class="projects-section" id="journey">
         <div class="section-header-box">
             <span class="hud-mono">02 // ROADMAP</span>
-            <h2 class="section-title split-heading">My Journey &mdash; <span class="accent font-syne">Roadmap</span></h2>
+            <h2 class="section-title split-heading">My Journey &#8212; <span class="candy-accent font-val">Student Roadmap!</span></h2>
         </div>
 
         <div class="timeline">
@@ -244,34 +253,37 @@
                 <div class="timeline-progress" id="timelineProgress"></div>
             </div>
 
+            <!-- Item 01 -->
             <div class="timeline-item left scroll-reveal">
                 <div class="timeline-number">01</div>
                 <div class="timeline-content" data-tilt>
-                    <span class="tag">SPCF &bull; CCIS</span>
+                    <div class="project-tag">SPCF &bull; CCIS</div>
                     <h3>BS Information Technology</h3>
-                    <p>Building a strong foundation in programming, systems, databases, and modern tech stacks.</p>
+                    <p>Pursuing a strong IT foundation &#8212; building skills in programming, systems, databases, and modern tech stacks.</p>
                 </div>
-                <div class="timeline-date">2023 &mdash; PRESENT</div>
+                <div class="timeline-date">2023 &#8212; PRESENT</div>
                 <div class="timeline-dot"></div>
             </div>
 
+            <!-- Item 02 -->
             <div class="timeline-item right scroll-reveal">
                 <div class="timeline-number">02</div>
                 <div class="timeline-content" data-tilt>
-                    <span class="tag">Web &amp; App</span>
+                    <div class="project-tag">Web &amp; App Systems</div>
                     <h3>Web &amp; App Developer</h3>
-                    <p>Engineering responsive portfolios, Flutter apps, and interactive web systems.</p>
+                    <p>Engineering full-responsive portfolios with cutting-edge UI, 3D visuals, Flutter apps, and smooth GSAP interactions.</p>
                 </div>
                 <div class="timeline-date">PRESENT</div>
                 <div class="timeline-dot"></div>
             </div>
 
+            <!-- Item 03 -->
             <div class="timeline-item left scroll-reveal">
                 <div class="timeline-number">03</div>
                 <div class="timeline-content" data-tilt>
-                    <span class="tag">Creative</span>
+                    <div class="project-tag">Creative Vision</div>
                     <h3>Graphics &amp; Cinematic Media</h3>
-                    <p>Blending code with artistry through graphic design, UI/UX, and video production.</p>
+                    <p>Blending code with artistry &#8212; graphic design, UI/UX layouts, high-end video editing, and docu-film production.</p>
                 </div>
                 <div class="timeline-date">ALWAYS</div>
                 <div class="timeline-dot"></div>
@@ -279,19 +291,20 @@
         </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- PROJECTS SHOWCASE (SPOTLIGHT MOUSE HALO CARDS) -->
     <section class="projects-section" id="projects">
         <div class="section-header-box">
             <span class="hud-mono">03 // ARCHIVE</span>
-            <h2 class="section-title split-heading">Project Showcase &mdash; <span class="accent font-syne">What I've Built</span></h2>
+            <h2 class="section-title split-heading">Project Showcase &#8212; <span class="candy-accent font-val">What I've Built!</span></h2>
         </div>
 
         <div class="experience-grid">
+            <!-- Project 01 -->
             <div class="experience-card scroll-reveal" data-tilt>
                 <div class="experience-date">AUG-2K26</div>
-                <span class="tag">Full-Stack + Flutter</span>
-                <h3>Restaurant Ordering System</h3>
-                <p>Full-stack website and Flutter mobile app — a complete end-to-end build integrating web and mobile architectures.</p>
+                <div class="project-tag">Full-Stack + Flutter</div>
+                <h3>Web &amp; App Developer</h3>
+                <p>Full-stack website and Flutter mobile restaurant ordering system &#8212; a complete end-to-end build integrating web and mobile architectures.</p>
                 <div class="project-links-wrapper">
                     <a href="https://preview.flutlab.io/user_jnpt/sison-puri-mopl-restaurant/" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic" data-magnetic>
                         <i class="fa-regular fa-eye"></i> View Live
@@ -299,11 +312,12 @@
                 </div>
             </div>
 
+            <!-- Project 02 -->
             <div class="experience-card scroll-reveal" data-tilt>
-                <div class="experience-date">DRIVE</div>
-                <span class="tag">Graphics / UI-UX</span>
+                <div class="experience-date">DRIVE REPO</div>
+                <div class="project-tag">Graphics / UI-UX</div>
                 <h3>Visual Identity Drive</h3>
-                <p>UI/UX design exploration and cinematic brand layouts — curated high-res assets in my graphics archive.</p>
+                <p>Modern UI/UX design exploration and cinematic brand layouts &#8212; curated high-res assets in my graphics archive.</p>
                 <div class="project-links-wrapper">
                     <a href="https://drive.google.com/drive/folders/1SbxO9g4AKxJyyEa8N4CTd4JtxlG7L-b-" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic" data-magnetic>
                         <i class="fa-solid fa-folder-open"></i> Open Drive
@@ -311,11 +325,12 @@
                 </div>
             </div>
 
+            <!-- Project 03 -->
             <div class="experience-card scroll-reveal" data-tilt>
                 <div class="experience-date">FILM VAULT</div>
-                <span class="tag">Cinematics</span>
+                <div class="project-tag">Cinematics</div>
                 <h3>Cinematic Film Vault</h3>
-                <p>Docu-film production and high-end video post-processing — cinematic storytelling from concept to final cut.</p>
+                <p>Docu-film production and high-end video post-processing &#8212; cinematic storytelling from concept to color-graded final cut.</p>
                 <div class="project-links-wrapper">
                     <a href="https://drive.google.com/drive/folders/1yxpSOjNNpaVZ4F6Y1WLEx5D7ckdQ8K3C" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic" data-magnetic>
                         <i class="fa-solid fa-play"></i> Watch Film
@@ -325,11 +340,11 @@
         </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- TECHNICAL SKILLS (WITH RESTORED LIQUID WAVE FILL ON HOVER) -->
     <section class="skills-section" id="skills">
         <div class="section-header-box">
             <span class="hud-mono">04 // ARSENAL</span>
-            <h2 class="section-title split-heading">Technical Skills &mdash; <span class="accent font-syne">Core Expertise</span></h2>
+            <h2 class="section-title split-heading">Technical Skills &#8212; <span class="candy-accent font-val">Core Expertise!</span></h2>
         </div>
 
         <div class="skill-filters" id="skillFilters">
@@ -342,31 +357,41 @@
         </div>
 
         <div class="skill-grid" id="skillGrid">
+            <!-- Languages -->
             <div class="skill-card" data-category="languages"><i class="devicon-python-plain colored"></i><span>Python</span></div>
             <div class="skill-card" data-category="languages"><i class="devicon-java-plain colored"></i><span>Java</span></div>
             <div class="skill-card" data-category="languages"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
             <div class="skill-card" data-category="languages"><i class="devicon-dart-plain colored"></i><span>Dart</span></div>
+
+            <!-- Frontend -->
             <div class="skill-card" data-category="frontend"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
             <div class="skill-card" data-category="frontend"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
             <div class="skill-card" data-category="frontend"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+
+            <!-- Databases -->
             <div class="skill-card" data-category="databases"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
-            <div class="skill-card" data-category="databases"><i class="fa-solid fa-database icon-accent"></i><span>RDBMS / SQL</span></div>
-            <div class="skill-card" data-category="creative"><i class="fa-solid fa-film icon-accent"></i><span>Video Editing</span></div>
-            <div class="skill-card" data-category="creative"><i class="fa-solid fa-palette icon-accent"></i><span>Graphic Design</span></div>
+            <div class="skill-card" data-category="databases"><i class="fa-solid fa-database icon-candy"></i><span>RDBMS / SQL</span></div>
+
+            <!-- Creative -->
+            <div class="skill-card" data-category="creative"><i class="fa-solid fa-film icon-candy"></i><span>Video Editing</span></div>
+            <div class="skill-card" data-category="creative"><i class="fa-solid fa-palette icon-candy"></i><span>Graphic Design</span></div>
+
+            <!-- Tools -->
             <div class="skill-card" data-category="tools"><i class="devicon-figma-plain colored"></i><span>Figma</span></div>
             <div class="skill-card" data-category="tools"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
             <div class="skill-card" data-category="tools"><i class="devicon-git-plain colored"></i><span>Git &bull; GitHub</span></div>
         </div>
     </section>
 
-    <!-- CERTIFICATIONS -->
+    <!-- CERTIFICATIONS / CREDENTIALS -->
     <section class="certifications-section" id="certifications">
         <div class="section-header-box">
             <span class="hud-mono">05 // CREDENTIALS</span>
-            <h2 class="section-title split-heading">Certifications &mdash; <span class="accent font-syne">Milestones</span></h2>
+            <h2 class="section-title split-heading">Certifications &#8212; <span class="candy-accent font-val">Milestones!</span></h2>
         </div>
 
         <div class="cert-grid">
+            <!-- Cert 01 -->
             <div class="cert-item scroll-reveal">
                 <div class="cert-img-wrapper">
                     <img src="images/database.png" alt="Database Badge" onerror="this.src='https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=400&q=80'">
@@ -379,10 +404,11 @@
                 </div>
                 <div class="cert-info">
                     <h3>Certified Database Badge</h3>
-                    <p>Relational systems, SQL, and data management proficiency.</p>
+                    <p>Official database proficiency credential covering relational systems, SQL, and data management.</p>
                 </div>
             </div>
 
+            <!-- Cert 02 -->
             <div class="cert-item scroll-reveal">
                 <div class="cert-img-wrapper">
                     <img src="images/java.png" alt="Java Badge" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80'">
@@ -395,13 +421,14 @@
                 </div>
                 <div class="cert-info">
                     <h3>Certified Java Badge</h3>
-                    <p>OOP foundations, logic building, and application development.</p>
+                    <p>Java programming credential &#8212; OOP foundations, logic building, and scalable application development.</p>
                 </div>
             </div>
 
+            <!-- Cert 03 -->
             <div class="cert-item scroll-reveal">
                 <div class="cert-img-wrapper">
-                    <img src="images/web-pic.png" alt="Frontend Developer" onerror="this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80'">
+                    <img src="images/web-pic.png" alt="Frontend Developer Milestone" onerror="this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80'">
                     <div class="cert-overlay">
                         <a href="#projects" class="cert-overlay-link btn-magnetic" data-magnetic>
                             <span>See The Build</span>
@@ -411,17 +438,17 @@
                 </div>
                 <div class="cert-info">
                     <h3>Frontend Developer</h3>
-                    <p>The responsive web portfolio you're currently viewing.</p>
+                    <p>The full responsive web portfolio you're viewing &#8212; engineered for Web Systems &amp; Technologies.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROFILES -->
+    <!-- PROFILES / PUBLIC NETWORK (WITH 3D ROTATING ICONS & ROTATING CONIC BORDER) -->
     <section class="profiles-section" id="profiles">
         <div class="section-header-box">
             <span class="hud-mono">06 // PRESENCE</span>
-            <h2 class="section-title split-heading">Web Presence &mdash; <span class="accent font-syne">My Network</span></h2>
+            <h2 class="section-title split-heading">Web Presence &#8212; <span class="candy-accent font-val">My Network!</span></h2>
         </div>
 
         <div class="profile-header">
@@ -429,37 +456,37 @@
                 <img src="images/jdp.jfif" alt="Jericho Puri" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
             </div>
             <div class="profile-text">
-                <p class="accent font-syne">@jdpursss</p>
-                <span class="hud-mono dim">DIGITAL FOOTPRINT // 2026</span>
+                <p class="candy-accent font-val">@jdpursss</p>
+                <span class="hud-mono dim">@jdpursss</span>
             </div>
         </div>
 
         <div class="profiles-grid">
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="profile-card btn-magnetic" data-magnetic>
-                <div class="profile-icon"><i class="fa-brands fa-facebook"></i></div>
+                <div class="profile-icon"><i class="fa-brands fa-facebook" style="color:#B2D5E5;"></i></div>
                 <div class="profile-info"><h3>Facebook</h3><p>Connect</p></div>
             </a>
             <a href="https://www.instagram.com/jdpursss/" target="_blank" rel="noopener noreferrer" class="profile-card btn-magnetic" data-magnetic>
-                <div class="profile-icon"><i class="fa-brands fa-instagram"></i></div>
+                <div class="profile-icon"><i class="fa-brands fa-instagram" style="color:#B2D5E5;"></i></div>
                 <div class="profile-info"><h3>Instagram</h3><p>Follow</p></div>
             </a>
             <a href="mailto:purijericho1020@gmail.com" class="profile-card btn-magnetic" data-magnetic>
-                <div class="profile-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="profile-icon"><i class="fa-solid fa-envelope" style="color:#B2D5E5;"></i></div>
                 <div class="profile-info"><h3>Email</h3><p>Reach</p></div>
             </a>
             <a href="tel:09169335903" class="profile-card btn-magnetic" data-magnetic>
-                <div class="profile-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="profile-icon"><i class="fa-solid fa-phone" style="color:#4ade80;"></i></div>
                 <div class="profile-info"><h3>Number</h3><p>Call</p></div>
             </a>
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT SECTION -->
     <section class="contact-section" id="contact">
         <div class="contact-container">
             <div class="section-header-box">
                 <span class="hud-mono">07 // COMMENCE</span>
-                <h2 class="section-title split-heading">Get In Touch &mdash; <span class="accent font-syne">Signal Me</span></h2>
+                <h2 class="section-title split-heading">Get In Touch &#8212; <span class="candy-accent font-val">Signal Me!</span></h2>
             </div>
 
             <h4 class="contact-note">
@@ -484,7 +511,7 @@
                         <label for="message">Project Scope &amp; Message</label>
                         <i class="fa-solid fa-comment input-icon"></i>
                     </div>
-                    <button type="submit" class="btn-primary btn-submit btn-magnetic" id="sendBtn" data-magnetic>
+                    <button type="submit" class="btn-resume btn-submit btn-magnetic" id="sendBtn" data-magnetic>
                         <span>Send Message</span>
                         <i class="fa-solid fa-paper-plane"></i>
                     </button>
@@ -497,7 +524,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <h2 class="footer-logo">Jericho<span class="accent">Puri</span></h2>
+                <h2 class="footer-logo">Jericho<span class="candy-accent">Puri</span></h2>
             </div>
 
             <ul class="footer-nav-links">
@@ -526,11 +553,12 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts: Three.js + GSAP 3 + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+    <!-- Custom Engines -->
     <script src="puri-3d.js"></script>
     <script src="puri.js"></script>
 </body>
