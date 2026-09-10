@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================
-    // 6. DYNAMIC TYPEWRITER
+    // 6. DYNAMIC TYPEWRITER (GSAP-powered smooth)
     // =========================================================
     function initTypewriter() {
         const typeEl = document.getElementById('typing-text');
@@ -259,28 +259,38 @@ document.addEventListener('DOMContentLoaded', () => {
             'A SYSTEMS ARCHITECT'
         ];
 
-        let wi = 0, ci = 0, del = false;
+        let wi = 0;
 
-        function type() {
+        function typeWord() {
             const word = words[wi];
-            typeEl.textContent = del ? word.substring(0, ci - 1) : word.substring(0, ci + 1);
-            if (del) ci--; else ci++;
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    gsap.delayedCall(1.6, () => {
+                        deleteWord(word, () => {
+                            wi = (wi + 1) % words.length;
+                            gsap.delayedCall(0.4, typeWord);
+                        });
+                    });
+                }
+            });
 
-            let speed = del ? 55 : 95;
-
-            if (!del && ci === word.length) {
-                speed = 1700;
-                del = true;
-            } else if (del && ci === 0) {
-                del = false;
-                wi = (wi + 1) % words.length;
-                speed = 450;
+            for (let i = 1; i <= word.length; i++) {
+                tl.call(() => {
+                    typeEl.textContent = word.substring(0, i);
+                }, null, (i - 1) * 0.08);
             }
-
-            setTimeout(type, speed);
         }
 
-        setTimeout(type, 300);
+        function deleteWord(word, onComplete) {
+            const tl = gsap.timeline({ onComplete });
+            for (let i = word.length; i >= 0; i--) {
+                tl.call(() => {
+                    typeEl.textContent = word.substring(0, i);
+                }, null, (word.length - i) * 0.04);
+            }
+        }
+
+        gsap.delayedCall(1, typeWord);
     }
 
     // =========================================================
