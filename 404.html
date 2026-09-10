@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Jericho Puri</title>
+    <title>404 // VOID — Jericho Puri</title>
     <meta name="description" content="404 Error — Page not found.">
     <meta name="theme-color" content="#020202">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -30,65 +30,83 @@
         }
 
         .error-card {
+            max-width: 700px;
+            width: 100%;
             text-align: center;
-            max-width: 520px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 60px 40px;
+            padding: 60px 36px;
         }
 
-        .error-number {
+        .error-huge-number {
             font-family: var(--font-heading);
-            font-size: clamp(5rem, 18vw, 10rem);
+            font-size: clamp(6rem, 18vw, 12rem);
             font-weight: 800;
             line-height: 0.9;
-            color: var(--accent);
-            margin-bottom: 16px;
-            opacity: 0.3;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--accent);
+            margin-bottom: 20px;
+            user-select: none;
+            letter-spacing: 4px;
         }
 
         .error-title {
             font-family: var(--font-heading);
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 800;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        .error-desc {
+        .error-description {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 32px;
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 48ch;
+            margin: 0 auto 32px;
         }
     </style>
 </head>
-<body>
+<body class="page-loaded">
 
     <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
 
     <div class="cursor-dot" data-cursor-dot aria-hidden="true"></div>
-    <div class="cursor-outline" data-cursor-outline aria-hidden="true"></div>
+    <div class="cursor-outline" data-cursor-outline aria-hidden="true">
+        <span class="cursor-view-text">RETURN</span>
+    </div>
 
     <div class="background-container" aria-hidden="true">
         <canvas id="bg-canvas"></canvas>
         <div class="grid-overlay"></div>
+        <div class="ambient-glow"></div>
+        <div class="noise-overlay"></div>
     </div>
 
     <main class="error-viewport">
-        <div class="error-card">
-            <div class="error-number">404</div>
-            <h2 class="error-title">Page Not Found</h2>
-            <p class="error-desc">The page you're looking for doesn't exist or has been moved.</p>
-            <a href="index.html" class="btn-primary">
-                <span>Go Home</span>
-                <i class="fa-solid fa-house"></i>
-            </a>
+        <div class="glass-card error-card expanded" data-tilt>
+            <div class="crosshair cross-tl">+</div>
+            <div class="crosshair cross-tr">+</div>
+            <div class="crosshair cross-bl">+</div>
+            <div class="crosshair cross-br">+</div>
+
+            <h1 class="error-huge-number">404</h1>
+            <h2 class="error-title">PAGE NOT FOUND</h2>
+            <p class="error-description">
+                The page you're looking for doesn't exist or has been moved.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="index.html" class="btn-primary btn-magnetic" data-magnetic>
+                    <span>Go Home</span>
+                    <i class="fa-solid fa-house"></i>
+                </a>
+            </div>
         </div>
     </main>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
     <script src="puri-3d.js"></script>
     <script src="puri.js"></script>
 </body>
