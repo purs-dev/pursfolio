@@ -202,6 +202,7 @@ img {
 .grid-overlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background-image:
         linear-gradient(var(--grid-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
@@ -213,6 +214,7 @@ img {
 .ambient-glow {
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: radial-gradient(circle at 50% 20%, rgba(178, 213, 229, 0.09) 0%, transparent 60%),
                 radial-gradient(circle at 80% 80%, rgba(178, 213, 229, 0.05) 0%, transparent 50%);
     pointer-events: none;
@@ -221,6 +223,7 @@ img {
 .noise-overlay {
     position: absolute;
     inset: 0;
+    z-index: 3;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
     opacity: 0.6;
     pointer-events: none;
@@ -509,9 +512,10 @@ img {
 }
 
 .typewriter-box {
+    font-family: 'Chakra Petch', sans-serif;
     font-size: clamp(1.2rem, 2.8vw, 2rem);
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -521,7 +525,7 @@ img {
 
 .code-bracket {
     color: var(--text-dim);
-    font-family: var(--font-mono);
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 .sub-title {
